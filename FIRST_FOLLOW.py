@@ -89,16 +89,16 @@ A  -> ab|a
 '''
 g=dict()
 # Grammar#1
-g['S']=['cAd', 'bd']
-g['A']=['ab', 'a']
+# g['S']=['cAd', 'bd']
+# g['A']=['ab', 'a']
 
-FIRST('S', g)
-FIRST('A', g)
-FIRST('c', g)
-FIRST('a', g)
+# FIRST('S', g)
+# FIRST('A', g)
+# FIRST('c', g)
+# FIRST('a', g)
 
-FOLLOW('S', g, start=True)
-FOLLOW('A', g)
+# FOLLOW('S', g, start=True)
+# FOLLOW('A', g)
 
 
 # Grammar#2
@@ -119,6 +119,19 @@ FOLLOW('A', g)
 # FOLLOW('T',g)
 # FOLLOW('S',g)
 # FOLLOW('F',g)
+
+g['S']=['F', '(ST)']
+g['T']=['+FT', '@']
+g['F']=['i', 'n']
+
+FIRST('S', g)
+FIRST('T', g)
+FIRST('F', g)
+
+FOLLOW('S', g, start=True)
+FOLLOW('T', g)
+FOLLOW('F', g)
+
 
 print('Given Grammar:')
 for item in g.keys():
